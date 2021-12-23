@@ -1,10 +1,21 @@
 import React, { Component } from "react";
 import Zmage from "react-zmage";
 import Fade from "react-reveal";
+import Modal from "react-modal";
 
 let id = 0;
-class Portfolio extends Component {
+class Portfolio extends Component {  
+  constructor(prop){
+    super(prop);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(){
+    console.log('this is:', this);
+  }
+
   render() {
+
     if (!this.props.data) return null;
 
     const projects = this.props.data.projects.map(function (projects) {
@@ -13,7 +24,7 @@ class Portfolio extends Component {
       return (
         <div key={id++} className="columns portfolio-item">
           <div className="item-wrap">
-            <Zmage alt={projects.title} src={projectImage} />
+            <Zmage alt={projects.title} src={projectImage}/>
             <div style={{ textAlign: "center" }}>{projects.title}</div>
           </div>
         </div>
